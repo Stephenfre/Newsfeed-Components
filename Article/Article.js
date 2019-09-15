@@ -123,12 +123,10 @@ function createArticle(articleInfo) {
   const articlePara2 = document.createElement("p");
   const articlePara3 = document.createElement("p");
   const articleButtons = document.createElement("span");
-  const buttonOpen = document.createElement("button");
-  const buttonClose = document.createElement("button");
 
   // CREATE STRUCTURE
-  articleButtons.appendChild(buttonOpen);
-  articleButtons.appendChild(buttonClose);
+  // articleButtons.appendChild(buttonOpen);
+  // articleButtons.appendChild(buttonClose);
   // articleTitle.appendChild(articleTitle);
   // articlePara.appendChild(articlePara);
   article.appendChild(articleTitle);
@@ -147,23 +145,24 @@ function createArticle(articleInfo) {
   articleTitle.textContent = articleInfo.title;
   articleDate.textContent = articleInfo.date;
   // console.log(articleInfo.title);
-  buttonOpen.textContent = "\u25bc";
-  buttonClose.textContent = "\u25b2";
+  articleButtons.textContent = "Open Article";
+  // buttonOpen.textContent = "\u25bc";
+  // buttonClose.textContent = "\u25b2";
 
   //apply styles
   article.classList.add("article");
   articleDate.classList.add("date");
   // articleTitle.classList.add('panel-bar');
   articleButtons.classList.add("article-buttons");
-  buttonOpen.classList.add("article-btn-open");
-  buttonClose.classList.add("article-btn-close");
+  // buttonOpen.classList.add("article-btn-open");
+  // buttonClose.classList.add("article-btn-close");
   // panelContent.classList.add("panel-content", "toggle-on");
 
   // create any event handlers
-  articleButtons.addEventListener("click", e => {
-    buttonOpen.classList.toggle("article-btn-open");
-    buttonClose.classList.toggle("article-btn-close");
-    // panelContent.classList.toggle('toggle-on');
+  articleButtons.addEventListener("click", event => {
+    buttonOpen.classList("article-buttons");
+    // buttonClose.classList.toggle("article-btn-close");
+    // articleButtons.classList.toggle("toggle-on");
   });
 
   return article;
@@ -171,6 +170,6 @@ function createArticle(articleInfo) {
 
 const articles = document.querySelector(".articles");
 
-data.forEach(articledata => {
-  articles.appendChild(createArticle(articledata));
+data.map(articleData => {
+  articles.appendChild(createArticle(articleData));
 });
